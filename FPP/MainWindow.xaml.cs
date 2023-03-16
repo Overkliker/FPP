@@ -23,18 +23,19 @@ namespace FPP
     public partial class MainWindow : Window
     {
         usersTableAdapter users = new usersTableAdapter();
+        messagesChatTableAdapter mes = new messagesChatTableAdapter();
         public MainWindow()
         {
             InitializeComponent();
             UsersGrid.ItemsSource = users.GetData();
-            UsersList.ItemsSource = users.GetData();
-            UsersList.DisplayMemberPath = "email";
+            UsersList.ItemsSource = mes.GetData();
+            UsersList.DisplayMemberPath = "fUserID";
 
         }
 
         private void UsersList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            MessageBox.Show((UsersList.SelectedItem as DataRowView).Row[1].ToString());
+            MessageBox.Show((UsersList.SelectedItem as DataRowView).Row[3].ToString());
         }
     }
 }
